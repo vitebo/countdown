@@ -1,11 +1,15 @@
 ( function( win, doc ) {
   'use strict';
- 
-  var $dayOfTheWeek = doc.querySelector( '[data-js="day-of-the-week"]' );
-  var $dayOfTheMonth = doc.querySelector( '[data-js="day-of-the-month"]' );
-  var $hour = doc.querySelector( '[data-js="hour"]' );
-  var $minutes = doc.querySelector( '[data-js="minutes"]' );
-  var $seconds = doc.querySelector( '[data-js="seconds"]' );
+  
+  var AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
+  var AMOUNT_OF_HOURS_IN_THE_DAY = 23;
+  var AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
+  var AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
+
+  var $remainingDays = doc.querySelector( '[data-js="remaining-days"]' );
+  var $remainingHours = doc.querySelector( '[data-js="remaining-hours"]' );
+  var $remainingMinutes = doc.querySelector( '[data-js="remaining-minutes"]' );
+  var $remainingSeconds = doc.querySelector( '[data-js="remaining-seconds"]' );
   
   function initialize() {
     refreshTheTime();
@@ -13,20 +17,27 @@
   
   function refreshTheTime() {
     var now = new Date();
-    $dayOfTheWeek.innerHTML =  getTheCurrentDayOfTheWeek( now.getDay() );
-    $dayOfTheMonth.innerHTML = now.getDate();
-    $hour.innerHTML = now.getHours();
-    $minutes.innerHTML = now.getMinutes();
-    $seconds.innerHTML = now.getSeconds();
+    $remainingDays.innerHTML = getRemainingDays( now.getDay() );
+    $remainingHours.innerHTML = getRemainingHours( now.getHours() );
+    $remainingMinutes.innerHTML = getRemainingMinutes( now.getMinutes() );
+    $remainingSeconds.innerHTML = getRemainingSeconds( now.getSeconds() );
     win.setTimeout( refreshTheTime, 100 );
   }
 
-  function getTheCurrentDayOfTheWeek( dayIndex ) {
-    return getEveryDayOfTheWeek()[ dayIndex ];
+  function getRemainingDays( currentDayOfTheWeek ) {
+    return AMOUNT_OF_DAYS_IN_THE_WEEK - ( currentDayOfTheWeek + 1 );
   }
 
-  function getEveryDayOfTheWeek() {
-    return [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ];
+  function getRemainingHours( currentHour ) {
+    return AMOUNT_OF_HOURS_IN_THE_DAY - currentHour;
+  }
+
+  function getRemainingMinutes( currentMinute ) {
+    return AMOUNT_OF_MINUTES_IN_THE_HOUR - currentMinute;
+  }
+
+  function getRemainingSeconds( currentSecond ) {
+    return AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE - currentSecond;
   }
 
   initialize();
