@@ -7,21 +7,50 @@
   var AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
 
   var $remainingDays = doc.querySelector( '[data-js="remaining-days"]' );
-  var $remainingHours = doc.querySelector( '[data-js="remaining-hours"]' );
-  var $remainingMinutes = doc.querySelector( '[data-js="remaining-minutes"]' );
-  var $remainingSeconds = doc.querySelector( '[data-js="remaining-seconds"]' );
+  var $remainingTime = doc.querySelector( '[data-js="time"]' );
   
+  var $clockArrowHour = doc.querySelector( '[data-js="clock-arrow-hour"]' );
+  var $clockArrowMinute = doc.querySelector( '[data-js="clock-arrow-minute"]' );
+  var $clockArrowSecond = doc.querySelector( '[data-js="clock-arrow-second"]' );
+
   function initialize() {
+    refreshTheWindow();
+  }
+
+  function refreshTheWindow() {
     refreshTheTime();
+    win.setTimeout( refreshTheWindow, 100 );
   }
   
   function refreshTheTime() {
     var now = new Date();
-    $remainingDays.innerHTML = getRemainingDays( now.getDay() );
-    $remainingHours.innerHTML = getRemainingHours( now.getHours() );
-    $remainingMinutes.innerHTML = getRemainingMinutes( now.getMinutes() );
-    $remainingSeconds.innerHTML = getRemainingSeconds( now.getSeconds() );
-    win.setTimeout( refreshTheTime, 100 );
+    refreshClock( now.getHours(), now.getMinutes(), now.getSeconds() );
+    $remainingTime.innerHTML = createRemainingTime( now.getHours(), now.getMinutes(), now.getSeconds() );
+    $remainingDays.innerHTML = createRemainingDays( now.getDay() );
+  }
+
+  function refreshClock( hours, minutes, seconds ) {
+    var hourDeg = hours * ( 360 / ( AMOUNT_OF_HOURS_IN_THE_DAY + 1 ) );
+    var minutesDeg = minutes * ( 360 / AMOUNT_OF_MINUTES_IN_THE_HOUR );
+    var secondsDeg = seconds * ( 360 / AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE );
+    $clockArrowHour.style.transform = 'rotate(' + hourDeg + 'deg)';
+    $clockArrowMinute.style.transform = 'rotate(' + minutesDeg + 'deg)';
+    $clockArrowSecond.style.transform = 'rotate(' + secondsDeg + 'deg)';
+  }
+ 
+  function createRemainingTime() {
+    return Array.prototype.reduce.call( arguments, function( total, number, index ) {
+      if( index === 1 ) total = transformInTwoDigits( total );
+      return total + ':' + transformInTwoDigits( number );
+    } );
+  }
+
+  function createRemainingDays( day ) {
+    return transformInTwoDigits( getRemainingDays( day ) );
+  }
+
+  function transformInTwoDigits( number ) {
+    return number < 10 ? '0'+number : number;
   }
 
   function getRemainingDays( currentDayOfTheWeek ) {

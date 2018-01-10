@@ -1,0 +1,24 @@
+body {
+  background-color: #333;
+  padding: 30px;
+}
+
+.clock {
+  max-width: 200px;
+}
+
+.clock__arrow {
+  transform-origin: bottom;
+}
+
+.clock__arrow--hour {
+  
+}
+
+.clock__arrow--minute {
+  
+}
+
+.clock__arrow--second {
+}
+
