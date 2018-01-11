@@ -40,8 +40,10 @@
  
   function createRemainingTime() {
     return Array.prototype.reduce.call( arguments, function( total, number, index ) {
-      if( index === 1 ) total = transformInTwoDigits( total );
-      return total + ':' + transformInTwoDigits( number );
+      if( index === 1 ) total = transformInTwoDigits( AMOUNT_OF_HOURS_IN_THE_DAY - total );
+      if( index === 2 ) return total + ':' + transformInTwoDigits( AMOUNT_OF_MINUTES_IN_THE_HOUR - number );
+      if( index === 3 ) return total + ':' + transformInTwoDigits( AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE - number );
+      return total + ':' + transformInTwoDigits( AMOUNT_OF_MINUTES_IN_THE_HOUR - number );
     } );
   }
 
