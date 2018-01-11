@@ -30,7 +30,7 @@
   }
 
   function refreshClock( hours, minutes, seconds ) {
-    var hourDeg = hours * ( 360 / ( AMOUNT_OF_HOURS_IN_THE_DAY + 1 ) );
+    var hourDeg = hours * ( 360 / ( ( AMOUNT_OF_HOURS_IN_THE_DAY + 1 ) / 2 ) );
     var minutesDeg = minutes * ( 360 / AMOUNT_OF_MINUTES_IN_THE_HOUR );
     var secondsDeg = seconds * ( 360 / AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE );
     $clockArrowHour.style.transform = 'rotate(' + hourDeg + 'deg)';
