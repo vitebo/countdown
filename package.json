@@ -1,0 +1,23 @@
+{
+  "name": "countdown",
+  "version": "1.0.0",
+  "description": "view in gh-pages: https://vitebo.github.io/countdown/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitebo/countdown.git"
+  },
+  "keywords": [],
+  "author": "André Alves Vitebo <vitebo@hotmail.com> (https://github.com/vitebo)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitebo/countdown/issues"
+  },
+  "homepage": "https://github.com/vitebo/countdown#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
