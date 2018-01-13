@@ -68,6 +68,8 @@ body {
 
 .countdown__text--time { font-size: 50px }
 
+.countdown__text--time > span { margin: 0 5px }
+
 @media screen and (max-width: 400px) {
   .countdown__text--time { font-size: 25px }
 }
