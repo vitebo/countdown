@@ -1,134 +1,117 @@
+/* fonts */
 @import url('https://fonts.googleapis.com/css?family=Lobster+Two');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+/* base style */
 html,
 body,
-.container {
-  height: 100%;
-}
+.container { height: 100% }
 
 body {
   background-color: #272727;
   color: #eee;
-  margin: 0;
-}
+  margin: 0 }
 
+/* cotainer */
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   justify-content: space-between;
+  margin: 0 auto }
+
+/* github log */
+.github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out }
+
+@media ( max-width: 500px ) {
+  .github-corner:hover .octo-arm { animation: none }
+  
+  .github-corner .octo-arm { animation: octocat-wave 560ms ease-in-out }
 }
 
+@keyframes octocat-wave {
+  0%,
+  100% { transform: rotate( 0 ) }
+  
+  20%,
+  60% { transform: rotate( -25deg ) }
+  
+  40%,
+  80% { transform: rotate( 10deg ) }
+}
+
+/* clock */
 .clock {
   display: block;
   margin: 30px auto;
   max-width: 200px;
-  position: relative;
-}
+  position: relative }
 
-.clock__arrow {
-  transform-origin: bottom;
-}
+.clock__arrow { transform-origin: bottom }
 
-.countdown {
-  padding: 30px;
-}
+/* countdown */
+.countdown { padding: 30px }
 
 .countdown__text {
-  margin: 10px 0;
-  text-align: center;
   font-weight: 400;
-}
+  margin: 10px 0;
+  text-align: center }
 
 .countdown__text--title {
-  font-size: 60px;
-  text-shadow: 3px 3px 3px #37474F;
   font-family: 'Lobster Two', cursive;
-}
+  font-size: 60px;
+  text-shadow: 3px 3px 3px #37474F }
 
 .countdown__text--time {
-  font-size: 50px;
   font-family: 'Roboto', sans-serif;
-}
+  font-size: 50px }
 
-.github-corner:hover .octo-arm {
-  animation:octocat-wave 560ms ease-in-out;
-} 
-
+/* footer */
 footer {
+  align-items: center;
+  background-color: #37474F;
+  display: flex;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
-  background-color: #37474F;
   height: 100%;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-@keyframes octocat-wave {
-  0%,100% {
-    transform:rotate(0)
-  }
-  
-  20%,
-  60% { 
-    transform:rotate(-25deg)
-  }
-  
-  40%,
-  80% { 
-    transform:rotate(10deg)
-  }
-}
-
-@media (max-width:500px) {
-  .github-corner:hover .octo-arm {
-    animation:none
-  }
-  
-  .github-corner .octo-arm {
-    animation:octocat-wave 560ms ease-in-out
-  }
-}
-    
+  padding: 10px }
 
 /* Pulse heart */
 .heart {
-  margin: 8px 10px;
-  width: 10px;
-  height: 10px;
-  background-color: #C62828;
-  position: relative;
-  display: inline-block;
   -webkit-animation: pulse .5s infinite alternate ease-in;
           animation: pulse .5s infinite alternate ease-in;
-}
+  background-color: #C62828;
+  display: inline-block;
+  height: 10px;
+  margin: 8px 10px;
+  position: relative;
+  width: 10px }
 
 .heart:before {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   background-color: #C62828;
+  border-radius: 50%;
+  content: "";
+  height: 10px;
+  left: 50%;
   position: absolute;
   top: 0;
-  left: 50%;
-  content: "";
-}
+  width: 10px }
 
 .heart:after {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   background-color: #C62828;
+  border-radius: 50%;
+  content: "";
+  height: 10px;
+  left: 0;
   position: absolute;
   top: 50%;
-  left: 0;
-  content: "";
-}
+  width: 10px }
 
 @keyframes pulse {
-    from {-webkit-transform: rotate(-135deg) scale(1);transform: rotate(-135deg) scale(1);}
-    to   {-webkit-transform: rotate(-135deg) scale(1.2);transform: rotate(-135deg) scale(1.2);}
+  from {
+    -webkit-transform: rotate( -135deg ) scale( 1 );
+            transform: rotate( -135deg ) scale( 1 ) }
+  to {
+    -webkit-transform: rotate( -135deg ) scale( 1.2 );
+            transform: rotate( -135deg ) scale( 1.2 ) }
 }
