@@ -47,7 +47,7 @@ body {
   max-width: 200px;
   position: relative }
 
-.clock__arrow { transform-origin: bottom }
+.clock__arrow { transform-origin: center }
 
 /* countdown */
 .countdown { padding: 30px }
