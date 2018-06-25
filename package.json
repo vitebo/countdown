@@ -4,7 +4,8 @@
   "description": "view in gh-pages: https://vitebo.github.io/countdown/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "./node_modules/gulp-cli/bin/gulp.js"
   },
   "repository": {
     "type": "git",
