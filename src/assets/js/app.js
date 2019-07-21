@@ -1,3 +1,5 @@
+import '../css/style.css';
+
 ( function( win, doc ) {
   'use strict';
   
