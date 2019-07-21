@@ -1,96 +1,90 @@
 import '../css/style.css';
 
-( function( win, doc ) {
-  'use strict';
-  
-  var AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
-  var AMOUNT_OF_HOURS_IN_THE_DAY = 23;
-  var AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
-  var AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
+const AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
+const AMOUNT_OF_HOURS_IN_THE_DAY = 23;
+const AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
+const AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
 
-  var $remainingDays = doc.querySelector( '[data-js="remaining-days"]' );
-  var $remainingTime = doc.querySelector( '[data-js="time"]' );
-  
-  var $clockArrowHour = doc.querySelector( '[data-js="clock-arrow-hour"]' );
-  var $clockArrowMinute = doc.querySelector( '[data-js="clock-arrow-minute"]' );
-  var $clockArrowSecond = doc.querySelector( '[data-js="clock-arrow-second"]' );
+const $remainingDays = document.querySelector( '[data-js="remaining-days"]' );
+const $remainingTime = document.querySelector( '[data-js="time"]' );
 
-  function initialize() {
-    refreshTheTime();
-  }
+const $clockArrowHour = document.querySelector( '[data-js="clock-arrow-hour"]' );
+const $clockArrowMinute = document.querySelector( '[data-js="clock-arrow-minute"]' );
+const $clockArrowSecond = document.querySelector( '[data-js="clock-arrow-second"]' );
 
-  function refreshTheTime() {
-    var now = new Date();
-    refreshClock( now.getHours(), now.getMinutes(), now.getSeconds() );
-    $remainingDays.innerHTML = createRemainingDays( now.getDay() );
-    $remainingTime.innerHTML = createRemainingTime( now.getHours(), now.getMinutes(), now.getSeconds() );
-    win.setTimeout( refreshTheTime, 100 );
-  }
+function initialize() {
+  refreshTheTime();
+}
 
-  function refreshClock( hours, minutes, seconds ) {
-    createRotate( $clockArrowHour, getTheAngleOfTheHour( hours ) );
-    createRotate( $clockArrowMinute, getTheAngleOfTheMinute( minutes ) );
-    createRotate( $clockArrowSecond, getAngleOfTheSecond( seconds ) );
-  }
+function refreshTheTime() {
+  const now = new Date();
+  refreshClock( now.getHours(), now.getMinutes(), now.getSeconds() );
+  $remainingDays.innerHTML = createRemainingDays( now.getDay() );
+  $remainingTime.innerHTML = createRemainingTime( now.getHours(), now.getMinutes(), now.getSeconds() );
+  window.setTimeout( refreshTheTime, 100 );
+}
 
-  function createRotate( $element, deg ) {
-    return $element.style.transform = 'rotate( '+ deg +'deg )';
-  }
+function refreshClock( hours, minutes, seconds ) {
+  createRotate( $clockArrowHour, getTheAngleOfTheHour( hours ) );
+  createRotate( $clockArrowMinute, getTheAngleOfTheMinute( minutes ) );
+  createRotate( $clockArrowSecond, getAngleOfTheSecond( seconds ) );
+}
 
-  function getTheAngleOfTheHour( hours ) {
-    return getAngle( hours, AMOUNT_OF_HOURS_IN_THE_DAY / 2 );
-  }
+function createRotate( $element, deg ) {
+  return $element.style.transform = `rotate( ${deg}deg )`;
+}
 
-  function getTheAngleOfTheMinute( minutes ) {
-    return getAngle( minutes, AMOUNT_OF_MINUTES_IN_THE_HOUR );
-  }
+function getTheAngleOfTheHour( hours ) {
+  return getAngle( hours, AMOUNT_OF_HOURS_IN_THE_DAY / 2 );
+}
 
-  function getAngleOfTheSecond( seconds ) {
-    return getAngle( seconds, AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE );
-  }
+function getTheAngleOfTheMinute( minutes ) {
+  return getAngle( minutes, AMOUNT_OF_MINUTES_IN_THE_HOUR );
+}
 
-  function getAngle( value, total ) {
-    return value * ( 360 / total );
-  }
+function getAngleOfTheSecond( seconds ) {
+  return getAngle( seconds, AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE );
+}
 
-  function createRemainingDays( day ) {
-    return transformInTwoDigits( getRemainingDays( day ) );
-  }
- 
-  function createRemainingTime( hours, minutes, seconds ) {
-    var reamingTime = getReamingTime( hours, minutes, seconds );
-    return reamingTime.reduce( function( result, value ) {
-      return result + ':' + value;
-    } );
-  }
+function getAngle( value, total ) {
+  return value * ( 360 / total );
+}
 
-  function transformInTwoDigits( number ) {
-    return number < 10 ? '0'+number : number;
-  }
+function createRemainingDays( day ) {
+  return transformInTwoDigits( getRemainingDays( day ) );
+}
 
-  function getRemainingDays( currentDayOfTheWeek ) {
-    return AMOUNT_OF_DAYS_IN_THE_WEEK - ( currentDayOfTheWeek + 1 );
-  }
+function createRemainingTime( hours, minutes, seconds ) {
+  const reamingTime = getReamingTime( hours, minutes, seconds );
+  return reamingTime.reduce( ( result, value ) => `${result} : ${value}`);
+}
 
-  function getReamingTime( currentHour, currentMinute, currentSecond ) {
-    var time = [];
-    time.push( getRemainingHours( currentHour ) );
-    time.push( getRemainingMinutes( currentMinute ) );
-    time.push( getRemainingSeconds( currentSecond ) );
-    return time;
-  }
+function transformInTwoDigits( number ) {
+  return number < 10 ? `0${number}` : number;
+}
 
-  function getRemainingHours( currentHour ) {
-    return transformInTwoDigits( AMOUNT_OF_HOURS_IN_THE_DAY - currentHour );
-  }
+function getRemainingDays( currentDayOfTheWeek ) {
+  return AMOUNT_OF_DAYS_IN_THE_WEEK - ( currentDayOfTheWeek + 1 );
+}
 
-  function getRemainingMinutes( currentMinute ) {
-    return transformInTwoDigits( AMOUNT_OF_MINUTES_IN_THE_HOUR - currentMinute );
-  }
+function getReamingTime( currentHour, currentMinute, currentSecond ) {
+  const time = [];
+  time.push( getRemainingHours( currentHour ) );
+  time.push( getRemainingMinutes( currentMinute ) );
+  time.push( getRemainingSeconds( currentSecond ) );
+  return time;
+}
 
-  function getRemainingSeconds( currentSecond ) {
-    return transformInTwoDigits( AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE - currentSecond );
-  }
+function getRemainingHours( currentHour ) {
+  return transformInTwoDigits( AMOUNT_OF_HOURS_IN_THE_DAY - currentHour );
+}
 
-  initialize();
-}( window, document ) );
+function getRemainingMinutes( currentMinute ) {
+  return transformInTwoDigits( AMOUNT_OF_MINUTES_IN_THE_HOUR - currentMinute );
+}
+
+function getRemainingSeconds( currentSecond ) {
+  return transformInTwoDigits( AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE - currentSecond );
+}
+
+initialize();
