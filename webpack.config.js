@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/assets/js/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
   },
   devServer: {
     contentBase: './dist'
@@ -21,6 +21,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: '/\.js$/',
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
     ],
   },
