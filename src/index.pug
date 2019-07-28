@@ -1,10 +1,22 @@
-extends ./layouts/default.pug
+doctype html
+html(lang="en")
+  head
+    //- Metas
+    //- ===========================================
+    meta( name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" )
+    meta( charset="utf-8" )
 
-block content
-  div.countdown
-    h1.countdown__text.countdown__text--title Countdown to Sunday
-    include ./assets/svgs/clock.svg
-    h2.countdown__text.countdown__text--time
-      span( data-js='remaining-days' )
-      span days and
-      span( data-js='time' )
+    //- SEO
+    //- ===========================================
+    title="Countdown"
+
+    //-  Styles
+    //- ===========================================
+    link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" )
+
+  body
+    main.container
+      include components/header/header
+      include components/clock/clock
+      include components/footer/footer
+
