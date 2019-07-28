@@ -1,1 +1,1 @@
-import './footer.css';
+import 'components/footer/footer.css';

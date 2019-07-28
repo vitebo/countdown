@@ -4,7 +4,7 @@
   "description": "view in gh-pages: https://vitebo.github.io/countdown/",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open",
+    "dev": "webpack-dev-server",
     "build": "webpack"
   },
   "repository": {

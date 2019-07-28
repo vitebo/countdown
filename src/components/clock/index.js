@@ -1,4 +1,5 @@
-import './clock.css';
+import 'components/clock/clock.css';
+import remainingTime from 'services/remaining-time';
 
 const AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
 const AMOUNT_OF_HOURS_IN_THE_DAY = 23;
@@ -19,9 +20,9 @@ function initialize() {
 function refreshTheTime() {
   const now = new Date();
   refreshClock( now.getHours(), now.getMinutes(), now.getSeconds() );
-  $remainingDays.innerHTML = createRemainingDays( now.getDay() );
-  $remainingTime.innerHTML = createRemainingTime( now.getHours(), now.getMinutes(), now.getSeconds() );
-  window.setTimeout( refreshTheTime, 100 );
+  $remainingDays.innerHTML = remainingTime.calculateDays(now.getDay());
+  $remainingTime.innerHTML = remainingTime.calculateTime(now.getHours(), now.getMinutes(), now.getSeconds());
+  window.setTimeout(refreshTheTime, 100);
 }
 
 function refreshClock( hours, minutes, seconds ) {
@@ -48,43 +49,6 @@ function getAngleOfTheSecond( seconds ) {
 
 function getAngle( value, total ) {
   return value * ( 360 / total );
-}
-
-function createRemainingDays( day ) {
-  return transformInTwoDigits( getRemainingDays( day ) );
-}
-
-function createRemainingTime( hours, minutes, seconds ) {
-  const reamingTime = getReamingTime( hours, minutes, seconds );
-  return reamingTime.reduce( ( result, value ) => `${result} : ${value}`);
-}
-
-function transformInTwoDigits( number ) {
-  return number < 10 ? `0${number}` : number;
-}
-
-function getRemainingDays( currentDayOfTheWeek ) {
-  return AMOUNT_OF_DAYS_IN_THE_WEEK - ( currentDayOfTheWeek + 1 );
-}
-
-function getReamingTime( currentHour, currentMinute, currentSecond ) {
-  const time = [];
-  time.push( getRemainingHours( currentHour ) );
-  time.push( getRemainingMinutes( currentMinute ) );
-  time.push( getRemainingSeconds( currentSecond ) );
-  return time;
-}
-
-function getRemainingHours( currentHour ) {
-  return transformInTwoDigits( AMOUNT_OF_HOURS_IN_THE_DAY - currentHour );
-}
-
-function getRemainingMinutes( currentMinute ) {
-  return transformInTwoDigits( AMOUNT_OF_MINUTES_IN_THE_HOUR - currentMinute );
-}
-
-function getRemainingSeconds( currentSecond ) {
-  return transformInTwoDigits( AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE - currentSecond );
 }
 
 initialize();

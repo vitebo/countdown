@@ -4,13 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/app.js',
+  context: path.resolve(__dirname, 'src'),
+  entry: './app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].bundle.js',
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -34,10 +35,13 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.pug'
+      template: './index.pug'
     }),
   ]
 };
