@@ -4,6 +4,19 @@ const AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
 const AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
 
 export default new class RemainingTime {
+  constructor() {
+    this.$remainingDays = document.querySelector('[data-js="remaining-days"]');
+    this.$remainingTime = document.querySelector('[data-js="time"]');
+    this.updateTheTime();
+  }
+
+  updateTheTime() {
+    const now = new Date();
+    this.$remainingDays.innerHTML = this.calculateDays(now.getDay());
+    this.$remainingTime.innerHTML = this.calculateTime(now.getHours(), now.getMinutes(), now.getSeconds());
+    window.setTimeout(() => this.updateTheTime(), 100);
+  }
+
   calculateDays(day) {
     const remainingDays = AMOUNT_OF_DAYS_IN_THE_WEEK - (day + 1);
     return this.transformInTwoDigits(remainingDays);
@@ -25,19 +38,19 @@ export default new class RemainingTime {
   }
 
   calculateTime(hours, minutes, seconds) {
-    const reamingTime = this.getReamingTime( hours, minutes, seconds );
-    return reamingTime.reduce( ( result, value ) => `${result} : ${value}`);
+    const reamingTime = this.getReamingTime(hours, minutes, seconds);
+    return reamingTime.reduce((result, value) => `${result} : ${value}`);
   }
 
-  getReamingTime( currentHour, currentMinute, currentSecond ) {
+  getReamingTime(currentHour, currentMinute, currentSecond) {
     const time = [];
-    time.push( this.calculateHours( currentHour ) );
-    time.push( this.calculateMinutes( currentMinute ) );
-    time.push( this.calculateSeconds( currentSecond ) );
+    time.push(this.calculateHours(currentHour));
+    time.push(this.calculateMinutes(currentMinute));
+    time.push(this.calculateSeconds(currentSecond));
     return time;
   }
 
-  transformInTwoDigits( number ) {
+  transformInTwoDigits(number) {
     return number < 10 ? `0${number}` : number;
   }
-}();
+};
