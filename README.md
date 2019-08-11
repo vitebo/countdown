@@ -12,13 +12,14 @@ Um desafio proposto em um grupo de estudos:
 
 ## Regras do desafio
 
-- Criar uma aplicação que receba uma data inicial (Por padrão o dia atual) e informe quantos dias faltam até o próximo domingo!
+- Criar uma aplicação que receba uma data inicial (Por padrão o dia atual)
+e informe quantos dias faltam até o próximo domingo!
 - Bônus: Acrescentar Horas/minutos/segundos ao contador
 - Pode ser resolvido tanto em PHP quanto Javascript.
 
 ## Técnologias utilizadas
 
-- [Gulp](https://gulpjs.com/) para automatizar tarefas
+- [Webpack](https://webpack.js.org/) como bundler
 - [Pug](https://pugjs.org/api/getting-started.html) como _template engine_
 
 ## Estrutura do projeto
@@ -27,46 +28,33 @@ Um desafio proposto em um grupo de estudos:
     ├── README.md
     ├── LICENSE.md
     ├── src/
-    |   ├── assets/
-    |   |   ├── css/
-    |   |   |   └── style.css
-    |   |   ├── icons/
-    |   |   |   ├── github-icon.svg
-    |   |   |   └── heart-icon.svg
-    |   |   ├── js/
-    |   |   |   └── main.js
-    |   |   └── svgs/
-    |   |       └── clock.svg
-    |   ├── layouts/
-    |   |   └── default.pug
-    |   ├── partials/
-    |   |   ├── footer.pug
-    |   |   └── header.pug
+    |   ├── components/
+    |   |   ├── clock/
+    |   |   ├── header/
+    |   |   ├── footer/
+    |   |   └── reaming-time/
+    |   ├── utils/
+    |   |   └── time.pug
     |   ├── index.pug
-    |   └── index.html
-    ├── gulpfile.js
+    |   ├── app.js.pug
+    |   └── app.css
+    ├── webpack.config.js
     ├── package.json
     ├── yarn.lock
     ├── .editorconfig
     └── .gitignore
 
-## Como rodar o projeto?
+## Rodando o projeto?
 
-1. clone o projeto `sh git@github.com:vitebo/countdown.git`
-2. acesse a pasta do projeto `cd countdown`
-3. `npm install` para instalar as depêndencias
-4. `npm run gulp server` para subir a aplicação
+### Requisitos
 
-### Está utilizando o yarn?
+Node: v12.6.0
 
-substitua os 2 ultimos passos por:
+Utilizamods o [yarn](https://yarnpkg.com) ao invés do [npm](https://www.npmjs.com/) para gerenciar as dependências.
 
-3. `yarn install` para instalar as depêndencias
-4. `yarn gulp server` para subir a aplicação
+### Scrips
 
-## Branchs
+3. `dev` para subir a aplicação
+4. `build` para criar o _bundle_ da aplicação
+4. `deploy` dispara um deploy no [github pages](https://vitebo.github.io/countdown/)
 
-O projeto possui 2 _branchs_ principais
-
-- **master**: branch principal com os arquivos fontes
-- **gh-pages**: branch apenas com os arquivos estáticos
