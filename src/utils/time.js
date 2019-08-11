@@ -1,0 +1,4 @@
+export const AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
+export const AMOUNT_OF_HOURS_IN_THE_DAY = 23;
+export const AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
+export const AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;

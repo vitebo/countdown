@@ -1,7 +1,9 @@
-const AMOUNT_OF_DAYS_IN_THE_WEEK = 7;
-const AMOUNT_OF_HOURS_IN_THE_DAY = 23;
-const AMOUNT_OF_MINUTES_IN_THE_HOUR = 59;
-const AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE = 60;
+import {
+  AMOUNT_OF_DAYS_IN_THE_WEEK,
+  AMOUNT_OF_HOURS_IN_THE_DAY,
+  AMOUNT_OF_MINUTES_IN_THE_HOUR,
+  AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE
+} from 'utils/time';
 
 export default new class RemainingTime {
   constructor() {
