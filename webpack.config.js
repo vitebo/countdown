@@ -6,7 +6,8 @@ module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
   devtool: 'inline-source-map',
-  entry: './app.js',
+  entry: './app.ts',
+  devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].bundle.js',
@@ -25,19 +26,15 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: '/\.js$/',
+        test: '/\.ts$/',
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: 'ts-loader',
       },
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new CleanWebpackPlugin(),
