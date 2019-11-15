@@ -26,9 +26,9 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: '/\.ts$/',
-        exclude: /node_modules/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
