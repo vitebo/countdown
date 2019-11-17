@@ -4,7 +4,7 @@
   "description": "view in gh-pages: https://vitebo.github.io/countdown/",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --host 0.0.0.0",
     "build": "webpack",
     "deploy": "webpack && gh-pages -d dist",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
