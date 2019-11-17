@@ -1,5 +1,7 @@
 # Countdown
 
+![Actions Status](https://github.com/vitebo/countdown/workflows//nodejs/badge.svg)
+
 Contagem regressiva até domingo
 
 Aplicação desenvolvida em _javascript_
