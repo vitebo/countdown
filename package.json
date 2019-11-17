@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "deploy": "webpack && gh-pages -d dist"
+    "deploy": "webpack && gh-pages -d dist",
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "pug-loader": "^2.4.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.7.2",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",

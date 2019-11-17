@@ -2,7 +2,7 @@ import {
   AMOUNT_OF_DAYS_IN_THE_WEEK,
   AMOUNT_OF_HOURS_IN_THE_DAY,
   AMOUNT_OF_MINUTES_IN_THE_HOUR,
-  AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE
+  AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE,
 } from 'utils/time';
 
 export default new class RemainingTime {
@@ -18,7 +18,11 @@ export default new class RemainingTime {
   private updateTheTime(): void {
     const now = new Date();
     this.$remainingDays.innerHTML = this.calculateDays(now.getDay());
-    this.$remainingTime.innerHTML = this.calculateTime(now.getHours(), now.getMinutes(), now.getSeconds());
+    this.$remainingTime.innerHTML = this.calculateTime(
+      now.getHours(),
+      now.getMinutes(),
+      now.getSeconds(),
+    );
     window.setTimeout(() => this.updateTheTime(), 100);
   }
 
@@ -47,7 +51,11 @@ export default new class RemainingTime {
     return reamingTime.reduce((result, value) => `${result} : ${value}`);
   }
 
-  private getReamingTime(currentHour: number, currentMinute: number, currentSecond: number): Array<string> {
+  private getReamingTime(
+    currentHour: number,
+    currentMinute: number,
+    currentSecond: number,
+  ): string[] {
     const time = [];
     time.push(this.calculateHours(currentHour));
     time.push(this.calculateMinutes(currentMinute));

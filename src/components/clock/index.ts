@@ -3,7 +3,7 @@ import {
   AMOUNT_OF_DAYS_IN_THE_WEEK,
   AMOUNT_OF_HOURS_IN_THE_DAY,
   AMOUNT_OF_MINUTES_IN_THE_HOUR,
-  AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE
+  AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE,
 } from 'utils/time';
 
 export default new class Clock {
@@ -43,10 +43,10 @@ export default new class Clock {
   }
 
   private getAngleOfTheSecond(seconds: number): number {
-    return this.getAngle( seconds, AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE );
+    return this.getAngle(seconds, AMOUNT_OF_THE_SECONDS_IN_THE_MINUTE);
   }
 
   private getAngle(value: number, total: number): number {
-    return value * ( 360 / total );
+    return value * (360 / total);
   }
-}
+};
